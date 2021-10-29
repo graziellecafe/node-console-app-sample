@@ -45,7 +45,7 @@ class Startup {
         this.ShowUserApplicationMethods && this.RunUserApplicationMethods();
         this.ShowStringCommandMethods && await this.RunStringCommandsMethods();
 
-        this.ShowExerciciosGrazi && new ManipulacaoArray().Run();
+        this.ShowExerciciosGrazi && await new ManipulacaoArray().Run();
         console.log("------Program finished------");
     }
 

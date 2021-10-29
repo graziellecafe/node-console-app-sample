@@ -1,10 +1,11 @@
 import { visitLexicalEnvironment } from "typescript";
+import { InputClass } from "../Utils/Console";
 
 export class ManipulacaoArray {
     public VetorA: Array<number> = [1, 3, 5, 4, 7, 6, 2, 8, 5, 9];
     public VetorB: Array<number> = [4, 3, 5, 6, 1, 3, 2, 4, 1, 7, 5, 50, 4];
   
-    public Run(): void {
+    public async Run(): Promise<void> {
         const value = 50;
         console.log('Elemento presente no vetor sem repetição:', this.encontrarUmElementoNoArraySemRepeticao(value), '\n');
         console.log('Elemento presente no vetor com repetição:', this.encontrarUmElementoNoArrayComRepeticao(value), '\n');
@@ -15,7 +16,9 @@ export class ManipulacaoArray {
         this.encontraMaiorElementoNoVetor(this.VetorA);
         this.encontraMenorElementoNoVetor(this.VetorA);
         this.organizaElementosParesImpares(vetor);
-        this.ordenaElementosOrdemCrescente(vetor)
+        this.ordenaElementosOrdemCrescente(vetor);
+
+        await this.reconhecimentoDePadroes();
     }
 
     // Não pode usar array.prototype.find()
@@ -125,6 +128,8 @@ export class ManipulacaoArray {
                 i++;
                 j++;
             }
+
+            //vetor[i] par 
         }
         console.log(`Vetor atualizado: [${vetor}]`);
     }
@@ -150,6 +155,18 @@ export class ManipulacaoArray {
             }          
         }
         console.log(`Vetor na ordem crescente: ${vetor}`);
+    }
+
+    private async reconhecimentoDePadroes(): Promise<void>{
+        console.log('');
+        console.log('Digite uma mensagem:');
+        var entrada = await InputClass.Read();
+        console.log('Entrada:', entrada);
+
+        // var stringName = 'Fagner';
+        for(let letra of entrada){
+        }
+        console.log([...entrada]);
     }
 }
 
