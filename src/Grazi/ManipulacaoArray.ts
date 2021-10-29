@@ -14,7 +14,8 @@ export class ManipulacaoArray {
         const vetor = this.VetorB;
         this.encontraMaiorElementoNoVetor(this.VetorA);
         this.encontraMenorElementoNoVetor(this.VetorA);
-        this.organizaElementos(vetor);
+        this.organizaElementosParesImpares(vetor);
+        this.ordenaElementosOrdemCrescente(vetor)
     }
 
     // Não pode usar array.prototype.find()
@@ -96,7 +97,7 @@ export class ManipulacaoArray {
         console.log('O menor número do vetor é: ', menorNumero);
     }
 
-    private organizaElementos(vetor: Array<number>): void {
+    private organizaElementosParesImpares(vetor: Array<number>): void {
         console.log('');
         console.log('Organiza vetor colocando elementos pares no início.');
         console.log(`Vetor original: [${vetor}]`);        
@@ -105,7 +106,7 @@ export class ManipulacaoArray {
         let j = i+1;
         let aux = 0; 
 
-        do {
+        while(i < vetor.length && j < vetor.length){
             // vetor[i] ímpar e vetor[j] par
             if(vetor[i] %2 !==0 && vetor[j] %2 === 0){
                 aux = vetor[i];
@@ -124,13 +125,31 @@ export class ManipulacaoArray {
                 i++;
                 j++;
             }
-
-            else {
-                vetor[i] = vetor[i];
-                j++;
-            }
-        } while(i < vetor.length && j < vetor.length);
+        }
         console.log(`Vetor atualizado: [${vetor}]`);
+    }
+
+    /* Desafio 1 - Escreva um algoritmo que seja capaz de ordenar todos os elementos numéricos presentes no array B em ordem crescente; */
+
+    private ordenaElementosOrdemCrescente(vetor: Array<number>): void{
+        console.log('');
+        console.log('Ordena elementos em ordem crescente.');
+        console.log(`Vetor original: [${vetor}]`); 
+
+        let i = 0; 
+        let j = i+1; 
+        let aux = 0; 
+      
+        for(i = 0; i < vetor.length; i++){
+            for(j = i+1; j < vetor.length; j++){
+                if(vetor[i] > vetor[j]){
+                        aux = vetor[i];
+                        vetor[i] = vetor[j];
+                        vetor[j] = aux;
+                }
+            }          
+        }
+        console.log(`Vetor na ordem crescente: ${vetor}`);
     }
 }
 
